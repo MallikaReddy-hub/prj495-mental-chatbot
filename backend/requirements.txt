@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlalchemy>=2.0
+bcrypt
+PyJWT
+httpx
+python-dotenv
+google-genai
+psycopg2-binary

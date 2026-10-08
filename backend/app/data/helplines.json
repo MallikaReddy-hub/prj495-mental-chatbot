@@ -1,0 +1,11 @@
+{
+  "_note": "Verify every number before each release. Add more countries as needed.",
+  "IN": [
+    {"name": "Tele-MANAS", "number": "14416", "lang": ["en", "hi", "te", "ta", "kn"]},
+    {"name": "Kiran", "number": "1800-599-0019", "lang": ["en", "hi"]},
+    {"name": "AASRA", "number": "9820466726", "lang": ["en", "hi"]}
+  ],
+  "US": [
+    {"name": "988 Suicide & Crisis Lifeline", "number": "988", "lang": ["en", "es"]}
+  ]
+}
