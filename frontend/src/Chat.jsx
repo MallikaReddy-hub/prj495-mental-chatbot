@@ -98,6 +98,12 @@ export default function Chat({ lang, setLang, onHelp }) {
             </div>
           ))}
         </div>
+                {quote && (
+          <div className="side-quote">
+            <span className="label">Thought of the day</span>
+            <blockquote>{quote}</blockquote>
+          </div>
+        )}
       </aside>
 
       <section className="chat">
@@ -115,7 +121,7 @@ export default function Chat({ lang, setLang, onHelp }) {
           {messages.length === 0 && (
             <div className="empty">
               <h2>How are you feeling today?</h2>
-              {quote && <blockquote>Thought of the day: {quote}</blockquote>}
+              
               <p>Type in your language and I'll reply in the same language.</p>
             </div>
           )}
