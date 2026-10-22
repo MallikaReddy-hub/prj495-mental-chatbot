@@ -1,6 +1,7 @@
 import "./chat.css";
 import { useEffect, useRef, useState } from "react";
 import { api } from "./api";
+import { useVoice } from "./useVoice.js";
 
 export const LANGS = [
   ["en", "English"], ["hi", "हिन्दी"], ["te", "తెలుగు"],
@@ -17,6 +18,8 @@ export default function Chat({ lang, setLang, onHelp }) {
   const [quote, setQuote] = useState("");
   const [sideOpen, setSideOpen] = useState(false);
   const endRef = useRef(null);
+  const voice = useVoice(lang);
+  const [rated, setRated] = useState({});
 
   const loadConvs = () => api.conversations().then(setConvs).catch(() => {});
 
@@ -69,7 +72,7 @@ export default function Chat({ lang, setLang, onHelp }) {
     setBusy(true);
     try {
       const r = await api.chat({ message: text, language: lang, conversation_id: activeId });
-      setMessages((m) => [...m, { role: "assistant", content: r.reply, is_crisis: r.is_crisis }]);
+      setMessages((m) => [...m, { id: r.message_id, role: "assistant", content: r.reply, is_crisis: r.is_crisis }]);
       if (!activeId) {
         setActiveId(r.conversation_id);
         loadConvs();
@@ -79,6 +82,28 @@ export default function Chat({ lang, setLang, onHelp }) {
     } finally {
       setBusy(false);
     }
+  }
+
+  async function rate(m, rating) {
+    if (!m.id || rated[m.id]) return;
+    try {
+      await api.feedback({ message_id: m.id, rating });
+      setRated((r) => ({ ...r, [m.id]: rating }));
+    } catch (err) { setError(err.message); }
+  }
+
+  function toggleMic() {
+    if (voice.listening) return voice.stop();
+    setError("");
+    voice.listen((text) => setInput((v) => (v ? v + " " : "") + text), setError);
+  }
+
+  function download() {
+    const text = messages.map((m) => `${m.role === "user" ? "Me" : "Companion"}: ${m.content}`).join("\n\n");
+    const url = URL.createObjectURL(new Blob([text], { type: "text/plain;charset=utf-8" }));
+    const a = document.createElement("a");
+    a.href = url; a.download = "my-chat.txt"; a.click();
+    URL.revokeObjectURL(url);
   }
 
   function onKey(e) {
@@ -98,17 +123,12 @@ export default function Chat({ lang, setLang, onHelp }) {
             </div>
           ))}
         </div>
-                {quote && (
-          <div className="side-quote">
-            <span className="label">Thought of the day</span>
-            <blockquote>{quote}</blockquote>
-          </div>
-        )}
       </aside>
 
       <section className="chat">
         <div className="chat-bar">
           <button className="hist" onClick={() => setSideOpen(!sideOpen)}>History</button>
+          {messages.length > 0 && <button className="hist show" onClick={download}>Download chat</button>}
           <label className="lang">
             Language
             <select value={lang} onChange={(e) => setLang(e.target.value)}>
@@ -121,7 +141,7 @@ export default function Chat({ lang, setLang, onHelp }) {
           {messages.length === 0 && (
             <div className="empty">
               <h2>How are you feeling today?</h2>
-              
+              {quote && <blockquote>Thought of the day: {quote}</blockquote>}
               <p>Type in your language and I'll reply in the same language.</p>
             </div>
           )}
@@ -129,6 +149,17 @@ export default function Chat({ lang, setLang, onHelp }) {
             <div key={i} className={`msg ${m.role}${m.is_crisis ? " crisis" : ""}`}>
               <div className="bubble">{m.content}</div>
               {m.is_crisis && <button className="link" onClick={onHelp}>Open helplines</button>}
+              {m.role === "assistant" && (
+                <div className="tools">
+                  <button aria-label="Read aloud" onClick={() => voice.speak(m.content, setError)}>🔊</button>
+                  {m.id && (
+                    <>
+                      <button aria-label="Helpful" className={rated[m.id] === 1 ? "on" : ""} onClick={() => rate(m, 1)}>👍</button>
+                      <button aria-label="Not helpful" className={rated[m.id] === -1 ? "on" : ""} onClick={() => rate(m, -1)}>👎</button>
+                    </>
+                  )}
+                </div>
+              )}
             </div>
           ))}
           {busy && <div className="msg assistant"><div className="bubble typing">Thinking...</div></div>}
@@ -139,6 +170,8 @@ export default function Chat({ lang, setLang, onHelp }) {
         <form className="composer" onSubmit={send}>
           <textarea rows={2} value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={onKey}
             placeholder="Write how you feel..." maxLength={2000} />
+          <button type="button" className={voice.listening ? "mic on" : "mic"} onClick={toggleMic}
+            aria-label="Speak your message" title="Speak (uses your browser's speech service)">🎤</button>
           <button className="primary" disabled={busy || !input.trim()}>Send</button>
         </form>
       </section>
