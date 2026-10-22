@@ -4,6 +4,9 @@ import Auth from "./Auth.jsx";
 import Chat from "./Chat.jsx";
 import Breathing from "./Breathing.jsx";
 import HelpModal from "./HelpModal.jsx";
+import Journal from "./Journal.jsx";
+import SafetyPlan from "./SafetyPlan.jsx";
+import Programs from "./Programs.jsx";
 
 export default function App() {
   const [loggedIn, setLoggedIn] = useState(!!getToken());
@@ -46,6 +49,9 @@ export default function App() {
         <nav>
           <button className={tab === "chat" ? "tab on" : "tab"} onClick={() => setTab("chat")}>Chat</button>
           <button className={tab === "breathe" ? "tab on" : "tab"} onClick={() => setTab("breathe")}>Breathe</button>
+          <button className={tab === "journal" ? "tab on" : "tab"} onClick={() => setTab("journal")}>Journal</button>
+          <button className={tab === "programs" ? "tab on" : "tab"} onClick={() => setTab("programs")}>Programs</button>
+          <button className={tab === "plan" ? "tab on" : "tab"} onClick={() => setTab("plan")}>Safety plan</button>
         </nav>
         <div className="actions">
           <button className="help-btn" onClick={() => setHelpOpen(true)}>Get help now</button>
@@ -60,7 +66,11 @@ export default function App() {
       </header>
 
       <main>
-        {tab === "chat" ? <Chat lang={lang} setLang={setLang} onHelp={() => setHelpOpen(true)} /> : <Breathing />}
+        {tab === "chat" && <Chat lang={lang} setLang={setLang} onHelp={() => setHelpOpen(true)} />}
+        {tab === "breathe" && <Breathing />}
+        {tab === "journal" && <Journal />}
+        {tab === "plan" && <SafetyPlan />}
+        {tab === "programs" && <Programs />}
       </main>
 
       <footer className="note">
