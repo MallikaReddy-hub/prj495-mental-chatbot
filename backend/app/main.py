@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
-from . import llm, safety
+from . import extras, llm, more, safety
 from .auth import create_token, current_user, hash_password, verify_password
 from .db import Base, Conversation, Message, User, engine, get_db
 
@@ -20,6 +20,8 @@ DEFAULT_COUNTRY = os.getenv("DEFAULT_COUNTRY", "IN")
 
 Base.metadata.create_all(engine)
 app = FastAPI(title="PRJ_495 Mental Health Chatbot API")
+app.include_router(extras.router)
+app.include_router(more.router)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=os.getenv("CORS_ORIGINS", "http://localhost:5173").split(","),
@@ -104,14 +106,17 @@ def chat(req: ChatReq, user: User = Depends(current_user), db: Session = Depends
 
     if safety.is_crisis(req.message):
         reply = safety.crisis_message(lang, helplines_for(DEFAULT_COUNTRY, lang))
+        reply += extras.plan_text(db, user.id)
         crisis, source = True, "safety"
     else:
         reply, source = llm.generate(req.message, history, lang)
         reply, crisis = safety.guard(reply, lang), False
 
-    db.add(Message(conversation_id=conv.id, role="assistant", content=reply, is_crisis=crisis))
+    bot = Message(conversation_id=conv.id, role="assistant", content=reply, is_crisis=crisis)
+    db.add(bot)
     db.commit()
-    return {"reply": reply, "is_crisis": crisis, "conversation_id": conv.id, "source": source}
+    return {"reply": reply, "is_crisis": crisis, "conversation_id": conv.id, "source": source,
+            "message_id": bot.id}
 
 
 @app.get("/conversations")
@@ -127,7 +132,7 @@ def get_conversation(conv_id: int, user: User = Depends(current_user), db: Sessi
     if not conv or conv.user_id != user.id:
         raise HTTPException(404, "Conversation not found")
     return {"id": conv.id, "title": conv.title, "messages": [
-        {"role": m.role, "content": m.content, "is_crisis": m.is_crisis, "created_at": m.created_at}
+        {"id": m.id, "role": m.role, "content": m.content, "is_crisis": m.is_crisis, "created_at": m.created_at}
         for m in conv.messages]}
 
 
@@ -136,6 +141,7 @@ def delete_conversation(conv_id: int, user: User = Depends(current_user), db: Se
     conv = db.get(Conversation, conv_id)
     if not conv or conv.user_id != user.id:
         raise HTTPException(404, "Conversation not found")
+    more.delete_feedback_for(db, [m.id for m in conv.messages])
     db.delete(conv)
     db.commit()
     return {"deleted": True}
@@ -143,6 +149,8 @@ def delete_conversation(conv_id: int, user: User = Depends(current_user), db: Se
 
 @app.delete("/me")
 def delete_account(user: User = Depends(current_user), db: Session = Depends(get_db)):
+    extras.delete_user_data(db, user.id)
+    more.delete_user_data(db, user.id)
     db.delete(user)  # conversations and messages cascade
     db.commit()
     return {"deleted": True}
