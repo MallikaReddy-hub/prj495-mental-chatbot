@@ -41,4 +41,13 @@ export const api = {
   deleteConversation: (id) => request(`/conversations/${id}`, { method: "DELETE" }),
   helplines: (lang) => request(`/helplines?lang=${lang}`),
   quote: () => request("/quote"),
+  feedback: (b) => request("/feedback", { method: "POST", body: b }),
+  programs: () => request("/programs"),
+  completeDay: (pid, day) => request(`/programs/${pid}/days/${day}`, { method: "POST" }),
+  undoDay: (pid, day) => request(`/programs/${pid}/days/${day}`, { method: "DELETE" }),
+  journal: () => request("/journal"),
+  saveMood: (b) => request("/journal", { method: "POST", body: b }),
+  deleteMood: (id) => request(`/journal/${id}`, { method: "DELETE" }),
+  plan: () => request("/safety-plan"),
+  savePlan: (b) => request("/safety-plan", { method: "PUT", body: b }),
 };
