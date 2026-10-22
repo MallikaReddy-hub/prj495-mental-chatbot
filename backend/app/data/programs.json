@@ -1,0 +1,20 @@
+[
+  {"id": "exam-stress", "title": "5 days to calmer exams",
+   "description": "Small daily steps for exam stress. General self-care ideas, not medical treatment.",
+   "days": [
+     {"day": 1, "title": "Name the worry", "task": "Write down your three biggest exam worries, one line each."},
+     {"day": 2, "title": "Plan small", "task": "Pick one topic, study it for 25 minutes, then take a 5-minute break."},
+     {"day": 3, "title": "Move a little", "task": "Take a 10-minute walk or stretch before you study."},
+     {"day": 4, "title": "Slow breathing", "task": "Do three rounds on the Breathe page before you start studying."},
+     {"day": 5, "title": "Look back", "task": "Write one thing you handled better this week than you expected."}
+   ]},
+  {"id": "better-sleep", "title": "5 days to better sleep habits",
+   "description": "Simple habits that help many people sleep. If sleep problems continue, please talk to a doctor.",
+   "days": [
+     {"day": 1, "title": "Fix a wake-up time", "task": "Choose a wake-up time you can keep every day this week."},
+     {"day": 2, "title": "Screens off", "task": "Put screens away 30 minutes before bed tonight."},
+     {"day": 3, "title": "Wind down", "task": "Do 5 minutes of slow breathing or gentle stretching before bed."},
+     {"day": 4, "title": "Ease off caffeine", "task": "Avoid tea, coffee and energy drinks after 4 pm today."},
+     {"day": 5, "title": "Notice and note", "task": "Write down how you slept and one thing that helped."}
+   ]}
+]
