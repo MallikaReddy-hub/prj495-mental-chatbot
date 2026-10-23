@@ -7,3 +7,20 @@
 .prog li.done span { opacity: 0.6; text-decoration: line-through; }
 .check { flex-direction: row; align-items: flex-start; gap: 10px; color: var(--ink); }
 .check input { margin-top: 4px; }
+.programs h2 { margin: 0 0 4px; }
+.p-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 12px 0; }
+.p-stats div { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px; text-align: center; display: flex; flex-direction: column; }
+.p-stats strong { font-size: 22px; color: var(--brand); }
+.p-stats small, .mins { color: var(--muted); font-size: 12px; }
+.cheer { background: #d9f3dc; color: #17381d; border-radius: 12px; padding: 10px 14px; margin-bottom: 12px; }
+.prog > summary { display: flex; align-items: center; gap: 12px; cursor: pointer; list-style: none; }
+.prog > summary::-webkit-details-marker { display: none; }
+.p-emoji { font-size: 28px; }
+.p-head { flex: 1; display: flex; flex-direction: column; }
+.p-head small { color: var(--muted); font-size: 12px; }
+.p-pct { font-weight: 700; color: var(--brand); }
+.p-pct.done { color: #2e8b57; }
+.prog li { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding: 8px; border-radius: 10px; }
+.prog li.next { background: var(--user); }
+.badge { margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: var(--brand); color: #fff; font-size: 11px; font-style: normal; }
+.go { white-space: nowrap; font-size: 13px; }

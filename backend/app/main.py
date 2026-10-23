@@ -19,6 +19,7 @@ LANGS = {"en", "hi", "te", "ta", "kn", "es"}
 DEFAULT_COUNTRY = os.getenv("DEFAULT_COUNTRY", "IN")
 
 Base.metadata.create_all(engine)
+extras.migrate(engine)
 app = FastAPI(title="PRJ_495 Mental Health Chatbot API")
 app.include_router(extras.router)
 app.include_router(more.router)

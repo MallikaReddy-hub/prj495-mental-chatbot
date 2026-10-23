@@ -46,6 +46,7 @@ export const api = {
   completeDay: (pid, day) => request(`/programs/${pid}/days/${day}`, { method: "POST" }),
   undoDay: (pid, day) => request(`/programs/${pid}/days/${day}`, { method: "DELETE" }),
   journal: () => request("/journal"),
+  journalSummary: () => request("/journal/summary"),
   saveMood: (b) => request("/journal", { method: "POST", body: b }),
   deleteMood: (id) => request(`/journal/${id}`, { method: "DELETE" }),
   plan: () => request("/safety-plan"),

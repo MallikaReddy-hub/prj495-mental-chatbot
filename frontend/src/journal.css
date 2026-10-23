@@ -11,3 +11,30 @@
 .bar-col small { font-size: 10px; color: var(--muted); }
 .j-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; }
 .j-list li { display: flex; justify-content: space-between; gap: 10px; padding: 8px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); font-size: 14px; }
+.journal h2 { margin: 0 0 12px; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.stat { display: flex; flex-direction: column; gap: 4px; padding: 14px; border-radius: 14px; border: 1px solid var(--line); background: var(--card); }
+.stat strong { font-size: 18px; }
+.stat small, .stat-title small { color: var(--muted); font-size: 12px; }
+.stat-title { font-size: 13px; font-weight: 600; }
+.mood-card { background: #dbeeff; color: #14304d; }
+.sleep-card { background: #dfe3ff; color: #1d2459; }
+.streak-card { background: #ffe9d6; color: #4d2a10; }
+.mood-card small, .sleep-card small, .streak-card small, .mood-card .stat-title small, .sleep-card .stat-title small { color: inherit; opacity: 0.75; }
+.field-title { margin: 6px 0 0; font-size: 14px; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font-size: 13px; }
+.chip.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+.mood.on.m1 { background: #ffd9d6; } .mood.on.m2 { background: #ffe6c9; } .mood.on.m3 { background: #e5e8ff; }
+.mood.on.m4 { background: #d9f3dc; } .mood.on.m5 { background: #ffeeb3; }
+.mood.on { color: #1f2d2b; }
+.bars { height: 200px; }
+.bar-col { position: relative; }
+.bar-face { font-size: 16px; line-height: 1; }
+.bar.m1 { background: #f28b82; } .bar.m2 { background: #fbbc74; } .bar.m3 { background: #9db4ff; }
+.bar.m4 { background: #7ed492; } .bar.m5 { background: #ffd166; }
+.bar-sleep { font-weight: 600; }
+.j-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+.j-head h3 { margin: 12px 0; }
+.j-search { padding: 6px 10px; max-width: 220px; }
+.tag { display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 999px; background: var(--user); font-size: 11px; font-style: normal; color: var(--ink); }

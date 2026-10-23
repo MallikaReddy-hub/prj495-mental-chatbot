@@ -1,5 +1,6 @@
 import "./breathing.css";
 import { useEffect, useState } from "react";
+import Grounding from "./Grounding.jsx";
 
 const PHASES = [
   { label: "Breathe in", secs: 4, scale: 1.45 },
@@ -7,7 +8,7 @@ const PHASES = [
   { label: "Breathe out", secs: 6, scale: 1 },
 ];
 
-export default function Breathing() {
+function Orb() {
   const [running, setRunning] = useState(false);
   const [phase, setPhase] = useState(0);
   const [left, setLeft] = useState(PHASES[0].secs);
@@ -50,6 +51,19 @@ export default function Breathing() {
       <button className="primary" onClick={toggle}>{running ? "Stop" : "Start"}</button>
       {running && <p className="tiny">Rounds completed: {cycles}</p>}
       <p className="tiny">If this makes you feel dizzy, stop and breathe normally.</p>
+    </div>
+  );
+}
+
+export default function Breathing() {
+  const [mode, setMode] = useState("breathe");
+  return (
+    <div className="calm">
+      <div className="calm-tabs" role="tablist">
+        <button role="tab" aria-selected={mode === "breathe"} className={mode === "breathe" ? "tab on" : "tab"} onClick={() => setMode("breathe")}>Slow breathing</button>
+        <button role="tab" aria-selected={mode === "ground"} className={mode === "ground" ? "tab on" : "tab"} onClick={() => setMode("ground")}>Grounding 5-4-3-2-1</button>
+      </div>
+      {mode === "breathe" ? <Orb /> : <Grounding />}
     </div>
   );
 }
