@@ -1,20 +1,248 @@
 [
-  {"id": "exam-stress", "title": "5 days to calmer exams",
-   "description": "Small daily steps for exam stress. General self-care ideas, not medical treatment.",
-   "days": [
-     {"day": 1, "title": "Name the worry", "task": "Write down your three biggest exam worries, one line each."},
-     {"day": 2, "title": "Plan small", "task": "Pick one topic, study it for 25 minutes, then take a 5-minute break."},
-     {"day": 3, "title": "Move a little", "task": "Take a 10-minute walk or stretch before you study."},
-     {"day": 4, "title": "Slow breathing", "task": "Do three rounds on the Breathe page before you start studying."},
-     {"day": 5, "title": "Look back", "task": "Write one thing you handled better this week than you expected."}
-   ]},
-  {"id": "better-sleep", "title": "5 days to better sleep habits",
-   "description": "Simple habits that help many people sleep. If sleep problems continue, please talk to a doctor.",
-   "days": [
-     {"day": 1, "title": "Fix a wake-up time", "task": "Choose a wake-up time you can keep every day this week."},
-     {"day": 2, "title": "Screens off", "task": "Put screens away 30 minutes before bed tonight."},
-     {"day": 3, "title": "Wind down", "task": "Do 5 minutes of slow breathing or gentle stretching before bed."},
-     {"day": 4, "title": "Ease off caffeine", "task": "Avoid tea, coffee and energy drinks after 4 pm today."},
-     {"day": 5, "title": "Notice and note", "task": "Write down how you slept and one thing that helped."}
-   ]}
+ {
+  "id": "exam-stress",
+  "emoji": "📚",
+  "title": "5 days to calmer exams",
+  "description": "Small daily steps for exam stress. General self-care ideas, not medical treatment.",
+  "level": "Beginner",
+  "days": [
+   {
+    "day": 1,
+    "title": "Name the worry",
+    "task": "Write down your three biggest exam worries, one line each.",
+    "minutes": 5
+   },
+   {
+    "day": 2,
+    "title": "Plan small",
+    "task": "Pick one topic, study it for 25 minutes, then take a 5-minute break.",
+    "minutes": 30
+   },
+   {
+    "day": 3,
+    "title": "Move a little",
+    "task": "Take a 10-minute walk or stretch before you study.",
+    "minutes": 10
+   },
+   {
+    "day": 4,
+    "title": "Slow breathing",
+    "task": "Do three rounds on the Breathe page before you start studying.",
+    "minutes": 5
+   },
+   {
+    "day": 5,
+    "title": "Look back",
+    "task": "Write one thing you handled better this week than you expected.",
+    "minutes": 5
+   }
+  ]
+ },
+ {
+  "id": "better-sleep",
+  "emoji": "🌙",
+  "title": "5 days to better sleep habits",
+  "description": "Simple habits that help many people sleep. If sleep problems continue, please talk to a doctor.",
+  "level": "Beginner",
+  "days": [
+   {
+    "day": 1,
+    "title": "Fix a wake-up time",
+    "task": "Choose a wake-up time you can keep every day this week.",
+    "minutes": 2
+   },
+   {
+    "day": 2,
+    "title": "Screens off",
+    "task": "Put screens away 30 minutes before bed tonight.",
+    "minutes": 30
+   },
+   {
+    "day": 3,
+    "title": "Wind down",
+    "task": "Do 5 minutes of slow breathing or gentle stretching before bed.",
+    "minutes": 5
+   },
+   {
+    "day": 4,
+    "title": "Ease off caffeine",
+    "task": "Avoid tea, coffee and energy drinks after 4 pm today.",
+    "minutes": 1
+   },
+   {
+    "day": 5,
+    "title": "Notice and note",
+    "task": "Write down how you slept and one thing that helped.",
+    "minutes": 5
+   }
+  ]
+ },
+ {
+  "id": "anxiety-basics",
+  "emoji": "🌿",
+  "title": "7 days of calming worry",
+  "description": "Everyday skills for racing thoughts. This is self-help practice, not treatment. If worry feels overwhelming, please talk to a doctor or counsellor.",
+  "level": "Beginner",
+  "days": [
+   {
+    "day": 1,
+    "title": "Notice your body",
+    "task": "Sit quietly for 2 minutes and notice where you feel tension. Just notice, do not fix it.",
+    "minutes": 3
+   },
+   {
+    "day": 2,
+    "title": "Slow breathing",
+    "task": "Do three rounds on the Breathe page.",
+    "minutes": 5
+   },
+   {
+    "day": 3,
+    "title": "Grounding 5-4-3-2-1",
+    "task": "Try the 5-4-3-2-1 grounding exercise on the Breathe page.",
+    "minutes": 5
+   },
+   {
+    "day": 4,
+    "title": "Worry time",
+    "task": "Pick a 10-minute window today for worries. When one appears outside it, jot it down and postpone it.",
+    "minutes": 10
+   },
+   {
+    "day": 5,
+    "title": "Fact or feeling",
+    "task": "Take one worry and write what you know for sure and what you are guessing.",
+    "minutes": 8
+   },
+   {
+    "day": 6,
+    "title": "Move it out",
+    "task": "Walk, stretch or dance for 10 minutes to release some nervous energy.",
+    "minutes": 10
+   },
+   {
+    "day": 7,
+    "title": "Reflect",
+    "task": "Write which skill helped most this week and plan to use it again.",
+    "minutes": 5
+   }
+  ]
+ },
+ {
+  "id": "self-kindness",
+  "emoji": "💛",
+  "title": "5 days of self-kindness",
+  "description": "Practise talking to yourself the way you would talk to a good friend.",
+  "level": "Beginner",
+  "days": [
+   {
+    "day": 1,
+    "title": "Catch the critic",
+    "task": "Notice one harsh thought about yourself today and write it down.",
+    "minutes": 3
+   },
+   {
+    "day": 2,
+    "title": "Friend voice",
+    "task": "Rewrite that thought the way you would say it to a friend.",
+    "minutes": 5
+   },
+   {
+    "day": 3,
+    "title": "Small comfort",
+    "task": "Do one small comforting thing for yourself: tea, music, a shower, a rest.",
+    "minutes": 15
+   },
+   {
+    "day": 4,
+    "title": "Done list",
+    "task": "Write 3 things you did today, however small, and give yourself credit.",
+    "minutes": 5
+   },
+   {
+    "day": 5,
+    "title": "Kind note",
+    "task": "Write a short, kind note to yourself for a hard day and keep it somewhere easy to find.",
+    "minutes": 8
+   }
+  ]
+ },
+ {
+  "id": "staying-connected",
+  "emoji": "🤝",
+  "title": "5 days of staying connected",
+  "description": "Gentle ways to feel less alone, one small reach-out at a time.",
+  "level": "Beginner",
+  "days": [
+   {
+    "day": 1,
+    "title": "Think of someone",
+    "task": "Write down two people you feel at ease with, even if you have not spoken in a while.",
+    "minutes": 3
+   },
+   {
+    "day": 2,
+    "title": "Say hello",
+    "task": "Send one of them a short message, even just a greeting.",
+    "minutes": 3
+   },
+   {
+    "day": 3,
+    "title": "Be around people",
+    "task": "Spend 15 minutes somewhere with other people nearby: a park, library or canteen.",
+    "minutes": 15
+   },
+   {
+    "day": 4,
+    "title": "Share one thing",
+    "task": "Tell someone you trust one honest thing about how your week has been.",
+    "minutes": 10
+   },
+   {
+    "day": 5,
+    "title": "Plan something",
+    "task": "Make one small plan with a friend or family member for the coming week.",
+    "minutes": 5
+   }
+  ]
+ },
+ {
+  "id": "study-focus",
+  "emoji": "🎯",
+  "title": "5 days to steadier focus",
+  "description": "Habits that make studying feel lighter and less overwhelming.",
+  "level": "Beginner",
+  "days": [
+   {
+    "day": 1,
+    "title": "One clear goal",
+    "task": "Write the single most important thing to finish today.",
+    "minutes": 3
+   },
+   {
+    "day": 2,
+    "title": "Phone away",
+    "task": "Study for 25 minutes with your phone in another room.",
+    "minutes": 25
+   },
+   {
+    "day": 3,
+    "title": "Break it down",
+    "task": "Split one big task into 3 small steps and finish the first.",
+    "minutes": 15
+   },
+   {
+    "day": 4,
+    "title": "Mind reset",
+    "task": "Take a 5-minute break with water and a stretch, then restart.",
+    "minutes": 5
+   },
+   {
+    "day": 5,
+    "title": "End of day",
+    "task": "Write what you finished and what comes first tomorrow.",
+    "minutes": 5
+   }
+  ]
+ }
 ]

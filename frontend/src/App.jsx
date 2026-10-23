@@ -69,8 +69,8 @@ export default function App() {
         {tab === "chat" && <Chat lang={lang} setLang={setLang} onHelp={() => setHelpOpen(true)} />}
         {tab === "breathe" && <Breathing />}
         {tab === "journal" && <Journal />}
-        {tab === "plan" && <SafetyPlan />}
-        {tab === "programs" && <Programs />}
+        {tab === "plan" && <SafetyPlan onHelp={() => setHelpOpen(true)} />}
+        {tab === "programs" && <Programs onGo={setTab} />}
       </main>
 
       <footer className="note">

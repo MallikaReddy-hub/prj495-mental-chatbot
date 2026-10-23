@@ -19,7 +19,7 @@ button { font: inherit; cursor: pointer; }
 .app { display: flex; flex-direction: column; height: 100%; }
 .top { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: var(--card); border-bottom: 1px solid var(--line); flex-wrap: wrap; }
 .brand { font-weight: 700; color: var(--brand); }
-nav { display: flex; gap: 4px; flex: 1; }
+nav { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
 .tab { background: none; border: 0; padding: 6px 12px; border-radius: 8px; color: var(--muted); }
 .tab.on { background: var(--user); color: var(--ink); }
 .actions { display: flex; align-items: center; gap: 10px; }
